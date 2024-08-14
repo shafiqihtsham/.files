@@ -10,6 +10,7 @@
 
   home.packages = with pkgs; [
     httpie
+    git
   ];
 
   programs.fzf = {
@@ -17,6 +18,14 @@
     enableZshIntegration = true;
   };
 
+  programs.git = {
+    enable = true;
+    lfs.enable = true;
+    userName = "Ihtsham Shafiq";
+    userEmail = "Ihtsham123@outlook.com";
+  };
+
+  
   home.stateVersion = "23.11";
 }
 
