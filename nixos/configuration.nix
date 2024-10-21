@@ -5,10 +5,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -42,13 +41,11 @@
     LC_TIME = "en_AU.UTF-8";
   };
 
-     # Enable OpenGL
-  hardware.opengl = {
-    enable = true;
-  };
+  # Enable OpenGL
+  hardware.opengl = { enable = true; };
 
   # Load nvidia driver for Xorg and Wayland
-  services.xserver.videoDrivers = ["nvidia"];
+  services.xserver.videoDrivers = [ "nvidia" ];
 
   hardware.nvidia = {
     # Modesetting is required.
@@ -83,12 +80,10 @@
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
   # Enable the KDE Plasma Desktop Environment.
   services.xserver.displayManager.sddm.enable = true;
   services.xserver.displayManager.sddm.wayland.enable = true;
   services.xserver.desktopManager.plasma5.enable = true;
-
 
   # Configure keymap in X11
   services.xserver = {
@@ -121,21 +116,22 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-  programs.zsh.enable = true; 
-  
+  programs.zsh.enable = true;
+
   environment.shells = with pkgs; [ zsh ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.eddy = {
     isNormalUser = true;
     description = "Ihtsham Shafiq";
-    shell = pkgs.zsh; 
+    shell = pkgs.zsh;
     useDefaultShell = true;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs; [
-      kate
-    #  thunderbird
-    ];
+    packages = with pkgs;
+      [
+        kate
+        #  thunderbird
+      ];
   };
 
   home-manager = {
@@ -147,7 +143,7 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.hyprland.enable = true;
-  
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
   nixpkgs.config.permittedInsecurePackages = [
@@ -163,9 +159,11 @@
     docker
     insomnia
     obsidian
+    wofi
+    nixfmt
   ];
 
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -180,7 +178,7 @@
   # Enable the OpenSSH daemon.
   # services.openssh.enable = true;
 
-  virtualisation.docker.enable = true; 
+  virtualisation.docker.enable = true;
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];

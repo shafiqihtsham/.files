@@ -1,17 +1,14 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./apps/zsh.nix
-  ];
-  
+  imports = [ ./apps/zsh.nix ./apps/hyprland.nix ];
+
   home.username = "eddy";
   home.homeDirectory = "/home/eddy";
 
-  home.packages = with pkgs; [
-    httpie
-    git
-  ];
+  home.packages = with pkgs; [ httpie git kitty ];
+
+  home.sessionVariables = { GDK_BACKEND = "wayland"; };
 
   programs.fzf = {
     enable = true;
@@ -25,7 +22,6 @@
     userEmail = "Ihtsham123@outlook.com";
   };
 
-  
   home.stateVersion = "23.11";
 }
 
