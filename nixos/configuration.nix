@@ -81,9 +81,9 @@
   # Enable the X11 windowing system.
   services.xserver.enable = true;
   # Enable the KDE Plasma Desktop Environment.
-  services.xserver.displayManager.sddm.enable = true;
-  services.xserver.displayManager.sddm.wayland.enable = true;
-  services.xserver.desktopManager.plasma5.enable = true;
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.displayManager.gdm.wayland = true;
+  # services.xserver.desktopManager.plasma5.enable = true;
 
   # Configure keymap in X11
   services.xserver = {
@@ -116,22 +116,17 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
-  environment.shells = with pkgs; [ zsh ];
+  environment.shells = with pkgs; [ fish ];
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.eddy = {
     isNormalUser = true;
     description = "Ihtsham Shafiq";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     useDefaultShell = true;
     extraGroups = [ "networkmanager" "wheel" "docker" ];
-    packages = with pkgs;
-      [
-        kate
-        #  thunderbird
-      ];
   };
 
   home-manager = {
@@ -160,7 +155,7 @@
     insomnia
     obsidian
     wofi
-    nixfmt
+    nixfmt-classic
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -176,7 +171,7 @@
   # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
+  services.openssh.enable = true;
 
   virtualisation.docker.enable = true;
 
