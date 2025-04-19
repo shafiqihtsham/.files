@@ -133,6 +133,7 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.eddy = import ../home-manager/home.nix;
+    backupFileExtension = "backup";
   };
 
   programs = {
