@@ -16,7 +16,11 @@
       "$terminal" = "kitty";
       "$menu" = "wofi -I -M fuzzy -S drun";
 
-      bind = [ "$mod, Q, exec, $terminal" "$mod, W, exec, $menu" ];
+      bind = [
+        "$mod, Q, exec, $terminal"
+        "$mod, W, exec, $menu"
+        "$mod, E, killactive"
+      ];
 
       bindm = [
         # mouse movements
