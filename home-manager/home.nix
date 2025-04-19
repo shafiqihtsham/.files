@@ -3,12 +3,12 @@
 {
   imports = [ ./apps/zsh.nix ./apps/hyprland.nix ];
 
-  home.username = "eddy";
-  home.homeDirectory = "/home/eddy";
-
-  home.packages = with pkgs; [ httpie git kitty ];
-
-  home.sessionVariables = { GDK_BACKEND = "wayland"; };
+  home = {
+    username = "eddy";
+    homeDirectory = "/home/eddy";
+    packages = with pkgs; [ httpie git kitty ];
+    sessionVariables = { GDK_BACKEND = "wayland"; };
+  };
 
   programs.fzf = {
     enable = true;
