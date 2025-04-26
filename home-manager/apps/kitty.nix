@@ -6,5 +6,6 @@
       size = 20;
     };
     shellIntegration.enableFishIntegration = true;
+    theme = "VSCode_Dark";
   };
 }
