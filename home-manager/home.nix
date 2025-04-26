@@ -6,7 +6,12 @@
   home = {
     username = "eddy";
     homeDirectory = "/home/eddy";
-    packages = with pkgs; [ httpie git kitty ];
+    packages = with pkgs; [
+      httpie
+      git
+      kitty
+      (nerdfonts.override { fonts = [ "JetBrainsMono" ]; })
+    ];
     sessionVariables = { GDK_BACKEND = "wayland"; };
   };
 
