@@ -88,9 +88,9 @@
   };
 
   # Configure keymap in X11
-  services.xserver = {
+  services.xserver.xkb = {
     layout = "au";
-    xkbVariant = "";
+    variant = "";
   };
 
   # Configure console keymap
@@ -161,6 +161,7 @@
     wofi
     nixfmt-classic
     statix
+    ripgrep
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
